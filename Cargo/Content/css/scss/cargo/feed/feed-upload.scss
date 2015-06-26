@@ -1,0 +1,53 @@
+﻿.feed-upload-form {
+    @include centre;
+    width: 40rem;
+    margin: 0 auto;
+	padding: 1rem;
+	font-size: 1.7rem;
+	border: 5px solid #000;
+	border-style: outset;
+
+    label {
+	    display: block;
+	    margin-bottom: 1rem;
+    }
+
+    select {
+	    display: block;
+	    width: 100%;
+	    margin-bottom: 1rem;
+    }
+
+    .btn-bar {
+        display: flex;
+        align-items: center;
+        margin-top: 1.5rem;
+
+        button,
+        input[type="file"] {
+            font-size: 1.3rem;
+        }
+
+        button {
+            flex: 0 0 auto;
+        }
+
+        input[type="file"] {
+            flex: 1 0 auto;
+        }
+    }
+}
+
+@media #{$mobile-width} {
+    .feed-upload-form  {
+        width: 85%;
+    }
+}
+
+/*@media #{$phone-width} {
+    .feed-upload-form  {
+        width: 85%;
+    }
+}*/
+
+

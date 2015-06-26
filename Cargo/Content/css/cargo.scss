@@ -1,0 +1,19 @@
+﻿@import 'scss/cargo/_mixins.scss';
+@import 'scss/cargo/_variables.scss';
+
+/* GENERIC SELECTOR STYLING */
+@import 'scss/cargo/reset.scss';
+@import 'scss/cargo/fonts.scss';
+
+/* FOR SITE-WIDE, REUSABLE CLASSES - KEEP SPECIVITY LOW */
+@import 'scss/cargo/bootstrap/alerts.scss';
+@import 'scss/cargo/bootstrap/animation.scss';
+@import 'scss/cargo/bootstrap/buttons.scss';
+@import 'scss/cargo/bootstrap/headings.scss';
+@import 'scss/cargo/bootstrap/tables.scss';
+
+/* FOR PAGE-SPECIFIC STYLING - USE THE HIERARCHY PROVIDED BY THE PHYSICAL FILE PATH */
+@import 'scss/cargo/shared/layout.scss';
+@import 'scss/cargo/feed/feed-upload.scss';
+@import 'scss/cargo/feed/map.scss';
+@import 'scss/cargo/feed/results.scss';

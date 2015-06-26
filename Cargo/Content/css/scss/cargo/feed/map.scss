@@ -1,0 +1,41 @@
+﻿.mapping {
+    .mapping-content {
+        display: flex;
+        margin: 1rem 0;
+    }
+
+    .mapping-columns {
+        flex: 1 1 auto;
+        padding-right: 1rem;
+
+        .table {
+            margin: 0 auto;
+        }
+    }
+
+    .mapping-fields {
+        flex: 0 0 15rem;
+        padding-left: 1rem;
+        padding-bottom: 3rem;
+    }
+
+    .btn-save {
+        position: absolute;
+        right: 2rem;
+        bottom: 2rem;
+    }
+
+    .drag-fields {
+
+        > li {
+            margin-bottom: 1rem;
+        }
+
+        span {
+            display: block;
+            padding: 0.9rem;
+            border: 1px solid #000;
+            background-color: #FFF;
+        }
+    }
+}

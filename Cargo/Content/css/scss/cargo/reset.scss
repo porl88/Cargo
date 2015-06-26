@@ -1,0 +1,273 @@
+﻿/***********************************************************************************************************************************************/
+/* RESET STYLE SHEET - RE-SETS ALL THE DEFAULT STYLING FOR THE SITE */
+/***********************************************************************************************************************************************/
+
+/*
+	* Designed to work with IE8+
+	* Avoid setting properties explicitly wherever possible and instead rely on an element's default inheritance to inherit properties from the root element. Those elements that do not by default inherit, such as margin and padding, are set explicitly. Otherwise values are explicitly set to inherit from the root element. The idea behind this is so that these default settings will be easy to override and will not interfere with 3rd party stylesheets.
+	* This style sheet is just a starting point. It should be adapted to your personal preferences and to your individual site requirements. Ideally you should be creating a reset/default stylesheet that is unique to each site.
+*/
+
+/* ROOT ELEMENT *********************************************************************************************************************************************************************************************/
+
+html {
+	font-family: sans-serif; /* web safe fonts: http://cssfontstack.com/ */
+	line-height: 1; /* prefer unitless numbers for line-height values: https://developer.mozilla.org/en-US/docs/Web/CSS/line-height */
+	word-wrap: break-word; /* word-wrap has been renamed to overflow-wrap */
+	overflow-wrap: break-word; /* word-wrap/overflow-wrap does not work with dynamic widths (e.g. percentage widths, tables that are not set to layout="fixed") - you will need to use word-break instead for these */
+	-webkit-font-smoothing: antialiased; /* maxvoltar.com/archive/-webkit-font-smoothing */
+	/* box-sizing (N.B. Opera & IE have never had vendor prefixes) */
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+/* UNIVERSAL ELEMENTS *********************************************************************************************************************************************************************************************/
+*, *:before, *:after {
+	/* http://css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice/ */
+	-moz-box-sizing: inherit;
+	-webkit-box-sizing: inherit;
+	box-sizing: inherit;
+}
+
+/* UNIVERSAL ATTRIBUTES *********************************************************************************************************************************************************************************************/
+
+[disabled] {
+	cursor: not-allowed;
+	opacity: 0.5;
+}
+
+[draggable="true"] {
+	cursor: move;
+	-webkit-user-drag: element; /* enables dragging in Safari */
+}
+
+[hidden] {
+	display: none; /* fix for browsers that do not support the HTML5 hidden attribute */
+}
+
+/* BLOCK-LEVEL ELEMENTS *********************************************************************************************************************************************************************************************/
+body,
+main,
+section,
+article,
+header,
+footer,
+nav,
+aside,
+div,
+h1, h2, h3, h4, h5, h6,
+hr,
+noscript,
+p,
+blockquote,
+pre,
+ol, ul, li,
+dl, dt, dd,
+form, fieldset,
+figure, figcaption,
+address,
+video, audio,
+canvas,
+output {
+	margin: 0;
+	padding: 0;
+	border: none;
+	vertical-align: baseline;
+}
+
+h1, h2, h3, h4, h5, h6, address {
+	font: inherit;
+}
+
+p {
+	-moz-hyphens: auto; /* Firefox 6+ */
+	-webkit-hyphens: auto; /* Safari 5.1+, IOS Safari 4.3+ */
+	-ms-hyphens: auto; /* IE 10+ */
+	hyphens: auto;
+}
+
+template, dialog {
+	display: none; /* fix for browsers that do not support the HTML5 <template> or <dialog> tags - browser support: Firefox 22+, Chrome 26+, Safari 8+, IOS Safari 8+, Opera 15+ */
+}
+
+/* INLINE ELEMENTS *********************************************************************************************************************************************************************************************/
+a,
+em, i,
+strong, b,
+mark,
+u,
+s,
+small,
+cite,
+q,
+dfn,
+abbr,
+data, time,
+code, var, samp, kbd,
+sub, sup,
+ruby, rt, rp,
+bdi, bdo,
+span {
+	vertical-align: baseline;
+}
+
+code, var, samp, kbd {
+	font-family: "Courier New", Courier, monospace;
+	font-size: 0.85em;
+	font-size: 0.85rem;
+}
+
+abbr {
+	speak: spell-out;
+}
+
+	abbr[title] {
+		border-bottom: 1px dotted #333;
+		cursor: help;
+	}
+
+/* definition - marks the first occurrence of a term */
+dfn::before {
+	content: open-quote;
+}
+
+dfn::after {
+	content: close-quote;
+}
+
+/* sup & sub - stops them affecting the line-height */
+sup, sub {
+	position: relative;
+	vertical-align: baseline;
+}
+
+sup {
+	bottom: 0.5em;
+}
+
+sub {
+	top: 0.5em;
+}
+
+
+/* LIST ELEMENTS *********************************************************************************************************************************************************************************************/
+
+ul, ol {
+	list-style: none;
+}
+
+/* TABLE ELEMENTS *********************************************************************************************************************************************************************************************/
+table, thead, tfoot {
+	margin: 0;
+	padding: 0;
+}
+
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+	empty-cells: show;
+	table-layout: auto;
+}
+
+th, td {
+	text-align: left;
+	vertical-align: top;
+	padding: 0;
+}
+
+th {
+	font-weight: bold;
+}
+
+caption {
+	caption-side: top;
+}
+
+/* FORM ELEMENTS *********************************************************************************************************************************************************************************************/
+
+/*
+	input types:
+		button, checkbox, color, date, datetime, datetime-local, email, file,
+		hidden, image, month, number, password, radio, range, reset, search,
+		submit, tel, text, time, url, week
+
+	other field elements:
+		button, select, textarea
+*/
+
+label[for] {
+	cursor: pointer;
+}
+
+/* all form fields */
+input, textarea, select, button {
+	font-family: inherit; /* do not use font - do not want to inherit line-height */
+	font-size: inherit;
+	outline: none;
+	/* box-sizing - can be deleted if using univeral selector to add box-sizing */
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+	/* Checkbox/Radio Fields */
+	input[type="checkbox"],
+	input[type="radio"] {
+		cursor: pointer;
+	}
+
+	/* Buttons */
+	input[type="submit"],
+	input[type="reset"],
+	input[type="button"],
+	button {
+		cursor: pointer;
+		-webkit-appearance: none;
+	}
+
+	input[type="image"],
+    input[type="file"] {
+		cursor: pointer;
+	}
+
+	input[readonly] {
+		border: none;
+		background-color: transparent;
+		font: inherit;
+		line-height: inherit;
+		vertical-align: baseline;
+	}
+
+	/* removes the extra padding and border on buttons and input tags for Firefox browsers
+			   http://css-tricks.com/forums/topic/button-padding-issue/ */
+	button::-moz-focus-inner,
+	input[type="button"]::-moz-focus-inner,
+	input[type="submit"]::-moz-focus-inner,
+	input[type="reset"]::-moz-focus-inner {
+		padding: 0;
+		border: 0;
+	}
+
+textarea {
+	min-height: 1.5em;
+	overflow: auto; /* removes unnecessary scrollbars in IE */
+	resize: vertical;
+}
+
+select {
+    cursor: pointer;
+}
+
+/* EMBEDDED CONTENT *********************************************************************************************************************************************************************************************/
+audio, video,
+iframe, object, embed {
+	margin: 0;
+	padding: 0;
+	border: none;
+}
+
+img {
+	border: none;
+	text-align: center;
+}

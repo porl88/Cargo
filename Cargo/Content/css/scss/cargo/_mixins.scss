@@ -1,0 +1,75 @@
+﻿@mixin box-sizing($model: border-box) {
+    -moz-box-sizing: $model;
+    -webkit-box-sizing: $model;
+    box-sizing: $model;
+}
+
+@mixin box-shadow ($string) {
+  -webkit-box-shadow: $string;
+  -moz-box-shadow:    $string;
+  box-shadow:         $string;
+}
+
+@mixin columns($columnCount, $columnGap) {
+    -moz-column-count: $columnCount;
+    -moz-column-gap: $columnGap;
+    -webkit-column-count: $columnCount;
+    -webkit-column-gap: $columnGap;
+    column-count: $columnCount;
+    column-gap: $columnGap;
+}
+
+@mixin gradient($startColour, $endColour, $startPercent: 0%, $endPercent: 100%) {
+    /* IE10 Consumer Preview */ 
+    background-image: -ms-linear-gradient(top, $startColour $startPercent, $endColour $endPercent);
+    /* Webkit (Safari/Chrome 10) */ 
+    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(#{$startPercent / 100%}, $startColour), color-stop(#{$endPercent / 100%}, $endColour));
+    /* Webkit (Chrome 11+) */ 
+    background-image: -webkit-linear-gradient(top, $startColour $startPercent, $endColour $endPercent);
+    /* W3C */
+    background-image: linear-gradient(to bottom, $startColour $startPercent, $endColour $endPercent);
+}
+
+@mixin animation($animation) {
+    -webkit-animation: $animation;
+    animation: $animation;
+}
+
+@mixin transform($transform) {
+    -ms-transform: $transform;
+    -webkit-transform: $transform;
+    transform: $transform;
+}
+
+@mixin transition($transition) {
+    -webkit-transition: $transition;
+    transition: $transition;
+}
+
+@mixin word-wrap() {
+  word-break:     break-word;
+  -webkit-hyphens: auto;
+  -moz-hyphens:    auto;
+  hyphens:         auto;
+}
+
+@mixin ellipsis() {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+@mixin cover() {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+@mixin centre() {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  @include transform(translate(-50%, -50%));
+}

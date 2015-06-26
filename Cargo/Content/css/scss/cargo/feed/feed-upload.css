@@ -1,0 +1,19 @@
+﻿.feed-upload-form {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 30rem;
+  margin: 0 auto;
+  padding: 1rem;
+  font-size: 1.7rem;
+  border: 5px solid #000;
+  border-style: outset; }
+  .feed-upload-form label {
+    display: block;
+    margin-bottom: 1rem; }
+  .feed-upload-form select {
+    display: block;
+    width: 100%;
+    margin-bottom: 1rem; }
+
+/*# sourceMappingURL=feed-upload.css.map */

@@ -1,0 +1,19 @@
+﻿<form class="feed-upload-form" method="post" action="@Url.Action("Index", "Feed")" enctype="multipart/form-data">
+
+	<label for="feed">Feed Type</label>
+	<select id="feed" name="feed" required="required">
+		<option value="">Select a Feed</option>
+        <option value="curry">Cargo Curry</option>
+		<option value="sales-versions">Sales Versions</option>
+		<option value="translation-labels">Translation Labels</option>
+		<option value="ebay-classifications">eBay Classifications</option>
+        <option value="integrator">Integrator Templates</option>
+		<option value="lambo-vehicles">Lamborghini Vehicles</option>
+	</select>
+
+	<div class="btn-bar">
+		<input type="file" name="files" accept="text/plain, .csv" required="required" multiple="multiple" />
+		<button class="btn">Upload</button>
+	</div>
+
+</form>

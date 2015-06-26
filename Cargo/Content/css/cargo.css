@@ -1,0 +1,402 @@
+﻿/* GENERIC SELECTOR STYLING */
+/***********************************************************************************************************************************************/
+/* RESET STYLE SHEET - RE-SETS ALL THE DEFAULT STYLING FOR THE SITE */
+/***********************************************************************************************************************************************/
+/*
+	* Designed to work with IE8+
+	* Avoid setting properties explicitly wherever possible and instead rely on an element's default inheritance to inherit properties from the root element. Those elements that do not by default inherit, such as margin and padding, are set explicitly. Otherwise values are explicitly set to inherit from the root element. The idea behind this is so that these default settings will be easy to override and will not interfere with 3rd party stylesheets.
+	* This style sheet is just a starting point. It should be adapted to your personal preferences and to your individual site requirements. Ideally you should be creating a reset/default stylesheet that is unique to each site.
+*/
+/* ROOT ELEMENT *********************************************************************************************************************************************************************************************/
+html {
+  font-family: sans-serif;
+  /* web safe fonts: http://cssfontstack.com/ */
+  line-height: 1;
+  /* prefer unitless numbers for line-height values: https://developer.mozilla.org/en-US/docs/Web/CSS/line-height */
+  word-wrap: break-word;
+  /* word-wrap has been renamed to overflow-wrap */
+  overflow-wrap: break-word;
+  /* word-wrap/overflow-wrap does not work with dynamic widths (e.g. percentage widths, tables that are not set to layout="fixed") - you will need to use word-break instead for these */
+  -webkit-font-smoothing: antialiased;
+  /* maxvoltar.com/archive/-webkit-font-smoothing */
+  /* box-sizing (N.B. Opera & IE have never had vendor prefixes) */
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box; }
+
+/* UNIVERSAL ELEMENTS *********************************************************************************************************************************************************************************************/
+*, *:before, *:after {
+  /* http://css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice/ */
+  -moz-box-sizing: inherit;
+  -webkit-box-sizing: inherit;
+  box-sizing: inherit; }
+
+/* UNIVERSAL ATTRIBUTES *********************************************************************************************************************************************************************************************/
+[disabled] {
+  cursor: not-allowed;
+  opacity: 0.5; }
+
+[draggable="true"] {
+  cursor: move;
+  -webkit-user-drag: element;
+  /* enables dragging in Safari */ }
+
+[hidden] {
+  display: none;
+  /* fix for browsers that do not support the HTML5 hidden attribute */ }
+
+/* BLOCK-LEVEL ELEMENTS *********************************************************************************************************************************************************************************************/
+body, main, section, article, header, footer, nav, aside, div, h1, h2, h3, h4, h5, h6, hr, noscript, p, blockquote, pre, ol, ul, li, dl, dt, dd, form, fieldset, figure, figcaption, address, video, audio, canvas, output {
+  margin: 0;
+  padding: 0;
+  border: none;
+  vertical-align: baseline; }
+
+h1, h2, h3, h4, h5, h6, address {
+  font: inherit; }
+
+p {
+  -moz-hyphens: auto;
+  /* Firefox 6+ */
+  -webkit-hyphens: auto;
+  /* Safari 5.1+, IOS Safari 4.3+ */
+  -ms-hyphens: auto;
+  /* IE 10+ */
+  hyphens: auto; }
+
+template, dialog {
+  display: none;
+  /* fix for browsers that do not support the HTML5 <template> or <dialog> tags - browser support: Firefox 22+, Chrome 26+, Safari 8+, IOS Safari 8+, Opera 15+ */ }
+
+/* INLINE ELEMENTS *********************************************************************************************************************************************************************************************/
+a, em, i, strong, b, mark, u, s, small, cite, q, dfn, abbr, data, time, code, var, samp, kbd, sub, sup, ruby, rt, rp, bdi, bdo, span {
+  vertical-align: baseline; }
+
+code, var, samp, kbd {
+  font-family: "Courier New", Courier, monospace;
+  font-size: 0.85em;
+  font-size: 0.85rem; }
+
+abbr {
+  speak: spell-out; }
+
+abbr[title] {
+  border-bottom: 1px dotted #333;
+  cursor: help; }
+
+/* definition - marks the first occurrence of a term */
+dfn::before {
+  content: open-quote; }
+
+dfn::after {
+  content: close-quote; }
+
+/* sup & sub - stops them affecting the line-height */
+sup, sub {
+  position: relative;
+  vertical-align: baseline; }
+
+sup {
+  bottom: 0.5em; }
+
+sub {
+  top: 0.5em; }
+
+/* LIST ELEMENTS *********************************************************************************************************************************************************************************************/
+ul, ol {
+  list-style: none; }
+
+/* TABLE ELEMENTS *********************************************************************************************************************************************************************************************/
+table, thead, tfoot {
+  margin: 0;
+  padding: 0; }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  empty-cells: show;
+  table-layout: auto; }
+
+th, td {
+  text-align: left;
+  vertical-align: top;
+  padding: 0; }
+
+th {
+  font-weight: bold; }
+
+caption {
+  caption-side: top; }
+
+/* FORM ELEMENTS *********************************************************************************************************************************************************************************************/
+/*
+	input types:
+		button, checkbox, color, date, datetime, datetime-local, email, file,
+		hidden, image, month, number, password, radio, range, reset, search,
+		submit, tel, text, time, url, week
+
+	other field elements:
+		button, select, textarea
+*/
+label[for] {
+  cursor: pointer; }
+
+/* all form fields */
+input, textarea, select, button {
+  font-family: inherit;
+  /* do not use font - do not want to inherit line-height */
+  font-size: inherit;
+  outline: none;
+  /* box-sizing - can be deleted if using univeral selector to add box-sizing */
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box; }
+
+/* Checkbox/Radio Fields */
+input[type="checkbox"], input[type="radio"] {
+  cursor: pointer; }
+
+/* Buttons */
+input[type="submit"], input[type="reset"], input[type="button"], button {
+  cursor: pointer;
+  -webkit-appearance: none; }
+
+input[type="image"], input[type="file"] {
+  cursor: pointer; }
+
+input[readonly] {
+  border: none;
+  background-color: transparent;
+  font: inherit;
+  line-height: inherit;
+  vertical-align: baseline; }
+
+/* removes the extra padding and border on buttons and input tags for Firefox browsers
+			   http://css-tricks.com/forums/topic/button-padding-issue/ */
+button::-moz-focus-inner, input[type="button"]::-moz-focus-inner, input[type="submit"]::-moz-focus-inner, input[type="reset"]::-moz-focus-inner {
+  padding: 0;
+  border: 0; }
+
+textarea {
+  min-height: 1.5em;
+  overflow: auto;
+  /* removes unnecessary scrollbars in IE */
+  resize: vertical; }
+
+select {
+  cursor: pointer; }
+
+/* EMBEDDED CONTENT *********************************************************************************************************************************************************************************************/
+audio, video, iframe, object, embed {
+  margin: 0;
+  padding: 0;
+  border: none; }
+
+img {
+  border: none;
+  text-align: center; }
+
+@font-face {
+  font-family: 'Railway';
+  src: url('/content/fonts/raleway/raleway_thin-webfont.woff') format('woff'); }
+
+/* FOR SITE-WIDE, REUSABLE CLASSES - KEEP SPECIVITY LOW */
+/************************************************************************************************************************************************************************************/
+/* ALERT MESSAGES */
+/************************************************************************************************************************************************************************************/
+.alert {
+  background-color: #FFFACD;
+  border: 2px solid #CC0000;
+  color: #000;
+  padding: 1em;
+  margin: 1em 0; }
+
+.alert h1, .alert h2, .alert h3, .alert h4 {
+  margin-bottom: 0.8em;
+  font-weight: bold; }
+
+.alert p {
+  margin-top: 0.8em;
+  margin-bottom: 0; }
+
+.alert p:first-child {
+  margin-top: 0; }
+
+/* error alerts - shown when something has failed - e.g. form validation, 404 error, etc. */
+.alert.error {
+  background-color: #FFEEEE;
+  border: 2px solid #CC0000; }
+
+/* success alerts - shown when something has succeeded - e.g. when a form has been submitted properly, when an email has been sent successfully */
+.alert.success {
+  background-color: #EEFFEE;
+  border: 2px solid #336633; }
+
+/* compact alert - puts all the text on to one line to save vertical space */
+.alert.compact {
+  text-align: center; }
+
+.alert.compact h1, .alert.compact h2, .alert.compact h3, .alert.compact h4, .alert.compact p {
+  display: inline; }
+
+.alert.compact h1::after, .alert.compact h2::after, .alert.compact h3::after, .alert.compact h4::after {
+  content: "."; }
+
+.blink {
+  animation: blink 0.4s infinite; }
+
+@keyframes blink {
+  0% {
+    opacity: 1; }
+
+  49% {
+    opacity: 1; }
+
+  50% {
+    opacity: 0; }
+
+  100% {
+    opacity: 0; } }
+
+.btn {
+  padding: 1rem 2rem;
+  color: #FFF;
+  background-color: #000;
+  border: none;
+  font-size: 1rem;
+  cursor: pointer; }
+
+.page-title {
+  margin-bottom: 1rem;
+  font-size: 2rem; }
+
+.sub-title {
+  margin-bottom: 1rem;
+  font-size: 1.4rem; }
+
+.table th, .table td {
+  border: 1px solid #000;
+  padding: 0.8rem;
+  empty-cells: show; }
+
+/* FOR PAGE-SPECIFIC STYLING - USE THE HIERARCHY PROVIDED BY THE PHYSICAL FILE PATH */
+html, body {
+  height: 100%; }
+
+html {
+  font-family: Railway, sans-serif;
+  font-size: 1.25vw; }
+
+body {
+  background: #696969; }
+
+.page {
+  position: relative;
+  max-width: 80rem;
+  /* 1280px / 16px */
+  min-height: 100%;
+  margin: 0 auto;
+  background-color: #FFF; }
+
+.page-header {
+  padding: 2rem; }
+  .page-header h1 {
+    font-size: 3rem;
+    text-align: center; }
+
+main {
+  min-height: 30rem;
+  padding: 2rem; }
+
+.page-footer {
+  padding: 2rem; }
+
+@media only screen and (max-width: 800px) {
+  html {
+    font-size: 14px; }
+ }
+
+@media screen and (min-width: 1600px) {
+  html {
+    font-size: 20px; }
+
+  /*.page {
+        width: 80rem;
+    }*/ }
+
+.feed-upload-form {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  width: 40rem;
+  margin: 0 auto;
+  padding: 1rem;
+  font-size: 1.7rem;
+  border: 5px solid #000;
+  border-style: outset; }
+  .feed-upload-form label {
+    display: block;
+    margin-bottom: 1rem; }
+  .feed-upload-form select {
+    display: block;
+    width: 100%;
+    margin-bottom: 1rem; }
+  .feed-upload-form .btn-bar {
+    display: flex;
+    align-items: center;
+    margin-top: 1.5rem; }
+    .feed-upload-form .btn-bar button, .feed-upload-form .btn-bar input[type="file"] {
+      font-size: 1.3rem; }
+    .feed-upload-form .btn-bar button {
+      flex: 0 0 auto; }
+    .feed-upload-form .btn-bar input[type="file"] {
+      flex: 1 0 auto; }
+
+@media only screen and (max-width: 800px) {
+  .feed-upload-form {
+    width: 85%; }
+ }
+
+/*@media only screen and (max-width: 400px) {
+    .feed-upload-form  {
+        width: 85%;
+    }
+}*/
+.mapping .mapping-content {
+  display: flex;
+  margin: 1rem 0; }
+.mapping .mapping-columns {
+  flex: 1 1 auto;
+  padding-right: 1rem; }
+  .mapping .mapping-columns .table {
+    margin: 0 auto; }
+.mapping .mapping-fields {
+  flex: 0 0 15rem;
+  padding-left: 1rem;
+  padding-bottom: 3rem; }
+.mapping .btn-save {
+  position: absolute;
+  right: 2rem;
+  bottom: 2rem; }
+.mapping .drag-fields > li {
+  margin-bottom: 1rem; }
+.mapping .drag-fields span {
+  display: block;
+  padding: 0.9rem;
+  border: 1px solid #000;
+  background-color: #FFF; }
+
+.map-results > section {
+  margin-bottom: 1.5rem; }
+.map-results .downloads {
+  text-align: right; }
+  .map-results .downloads > h2 {
+    display: none; }
+  .map-results .downloads > form {
+    display: inline-block;
+    margin-left: 1rem; }
+
+/*# sourceMappingURL=cargo.css.map */

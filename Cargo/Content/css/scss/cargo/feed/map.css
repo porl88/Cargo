@@ -1,0 +1,25 @@
+﻿.mapping .mapping-content {
+  display: flex;
+  margin: 1rem 0; }
+.mapping .mapping-columns {
+  flex: 1 1 auto;
+  padding-right: 1rem; }
+  .mapping .mapping-columns .table {
+    margin: 0 auto; }
+.mapping .mapping-fields {
+  flex: 0 0 15rem;
+  padding-left: 1rem;
+  padding-bottom: 3rem; }
+.mapping .btn-save {
+  position: absolute;
+  right: 2rem;
+  bottom: 2rem; }
+.mapping .drag-fields > li {
+  margin-bottom: 1rem; }
+.mapping .drag-fields span {
+  display: block;
+  padding: 0.9rem;
+  border: 1px solid #000;
+  background-color: #FFF; }
+
+/*# sourceMappingURL=map.css.map */

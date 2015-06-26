@@ -1,0 +1,61 @@
+﻿html, body {
+    height: 100%;
+}
+
+html {
+    font-family: Railway, sans-serif;
+    font-size: 1.25vw;
+}
+
+
+body {
+    background: #696969;
+}
+
+.page {
+    position: relative;
+    max-width: 80rem; /* 1280px / 16px */
+    min-height: 100%;
+    margin: 0 auto;
+    background-color: #FFF;
+}
+
+.page-header {
+    padding: 2rem;
+
+    h1 {
+        font-size: 3rem;
+        text-align: center;
+    }
+}
+
+main {
+    min-height: 30rem;
+    padding: 2rem;
+}
+
+.page-footer {
+    padding: 2rem;
+}
+
+@media #{$mobile-width} {
+    html {
+        font-size: 14px;
+    }
+}
+
+@media #{$desktop-width} {
+    /*html {
+        font-size: 16px;
+    }*/
+}
+
+@media screen and (min-width: 1600px) {
+    html {
+        font-size: 20px;
+    }
+
+    /*.page {
+        width: 80rem;
+    }*/
+}

@@ -1,0 +1,62 @@
+﻿/************************************************************************************************************************************************************************************/
+/* ALERT MESSAGES */
+/************************************************************************************************************************************************************************************/
+.alert {
+	background-color: #FFFACD;
+	border: 2px solid #CC0000;
+	color: #000;
+	padding: 1em;
+	margin: 1em 0;
+}
+
+	.alert h1,
+	.alert h2,
+	.alert h3,
+	.alert h4 {
+		margin-bottom: 0.8em;
+		font-weight: bold;
+	}
+
+	.alert p {
+		margin-top: 0.8em;
+		margin-bottom: 0;
+	}
+
+		.alert p:first-child {
+			margin-top: 0;
+		}
+
+
+	/* error alerts - shown when something has failed - e.g. form validation, 404 error, etc. */
+	.alert.error {
+		background-color: #FFEEEE;
+		border: 2px solid #CC0000;
+	}
+
+
+	/* success alerts - shown when something has succeeded - e.g. when a form has been submitted properly, when an email has been sent successfully */
+	.alert.success {
+		background-color: #EEFFEE;
+		border: 2px solid #336633;
+	}
+
+
+	/* compact alert - puts all the text on to one line to save vertical space */
+	.alert.compact {
+		text-align: center;
+	}
+
+		.alert.compact h1,
+		.alert.compact h2,
+		.alert.compact h3,
+		.alert.compact h4,
+		.alert.compact p {
+			display: inline;
+		}
+
+			.alert.compact h1::after,
+			.alert.compact h2::after,
+			.alert.compact h3::after,
+			.alert.compact h4::after {
+				content: ".";
+			}

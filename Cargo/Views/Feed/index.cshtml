@@ -1,0 +1,18 @@
+﻿@{
+    ViewBag.Title = "Inbound Feeds | ";
+}
+
+<section class="feed-index">
+	<h1 class="page-title" hidden="hidden">Inbound Feeds</h1>
+
+	@if (TempData["Error"] != null)
+	{
+	 <div class="alert error">
+		<p>@TempData["Error"]</p>
+	 </div>
+	}
+
+	@Html.Partial("~/views/feed/_feed-upload.cshtml")
+
+</section>
+

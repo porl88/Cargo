@@ -1,0 +1,86 @@
+﻿@using System.Data;
+@model Cargo.Models.Mapping.MapResultsViewModel
+@{
+	ViewBag.Title = "Results | ";
+}
+
+<section class="map-results">
+	<h1 class="page-title">Results</h1>
+
+	<section class="downloads">
+		<h2 class="sub-title">Downloads</h2>
+		@if (!string.IsNullOrWhiteSpace(Model.Results.SqlFilePath))
+		{
+			<form method="post" action="@Url.Action("Download")">
+				<input type="hidden" name="fileName" value="@(ViewContext.RouteData.Values["Feed"]).sql" />
+				<button class="btn" name="filePath" value="@Model.Results.SqlFilePath">Download SQL</button>
+			</form>
+		}
+		<form method="post" action="@Url.Action("DownloadErrors")">
+			<input type="hidden" name="fileName" value="@(ViewContext.RouteData.Values["Feed"])-errors.csv" />
+			<button class="btn">Download Errors</button>
+		</form>
+	</section>
+
+	@if (Model != null)
+	{
+		<section>
+			<h2 class="sub-title">Processed Records</h2>
+
+			@if (Model.Results != null)
+			{
+				<table class="table">
+					<thead>
+						<tr>
+							@foreach (DataColumn column in Model.Results.ResultsAsTable.Columns)
+							{
+								<th>@column.Caption</th>
+							}
+						</tr>
+					</thead>
+					<tbody>
+						@foreach (DataRow row in Model.Results.ResultsAsTable.Rows)
+						{
+							<tr>
+								@foreach (var cell in row.ItemArray)
+								{
+									<td>@cell.ToString()</td>
+								}
+							</tr>
+						}
+					</tbody>
+				</table>
+			}
+
+		</section>
+
+		if (Model.Results.Log != null && Model.Results.Log.Any())
+		{
+			<section>
+				<h2 class="sub-title">Errors</h2>
+				<table class="table">
+					<thead>
+						<tr>
+							<th>Row</th>
+							<th>Column</th>
+							<th>Value</th>
+							<th>Error</th>
+						</tr>
+					</thead>
+					<tbody>
+						@foreach (var error in Model.Results.Log)
+						{
+							<tr>
+								<td>@error.RowCount</td>
+								<td>@error.ColumnName</td>
+								<td>@error.Value</td>
+								<td>@error.Message</td>
+							</tr>
+						}
+					</tbody>
+				</table>
+			</section>
+		}
+	}
+
+</section>

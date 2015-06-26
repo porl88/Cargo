@@ -1,0 +1,59 @@
+﻿@model Cargo.Models.Mapping.ColumnMapViewModel
+@{
+	ViewBag.Title = string.Format("Map {0} | ", "Translation Labels");
+}
+
+<section class="mapping">
+
+	<h1 class="page-title">Map @*@Model.Name*@ Fields to CSV Columns</h1>
+
+	<div class="mapping-content">
+
+		<section class="mapping-columns">
+			<h2 class="sub-title">CSV Columns</h2>
+			<form id="csv" class="col-map-form" method="post" action="@Url.Action("Map")">
+				@if (Model != null)
+				{
+					<table class="table droppable">
+						<thead>
+							<tr>
+								<th>Column</th>
+								<th>Name</th>
+								<th>@*@Model.Name*@Translation Label Field</th>
+							</tr>
+						</thead>
+						<tbody>
+							@for (var i = 0; i < Model.Columns.Length; i++)
+							{
+								<tr>
+									<td>@i</td>
+									<td>@Model.Columns[i]</td>
+									<td data-column="@i" dropzone="move"></td>
+								</tr>
+							}
+						</tbody>
+					</table>
+				}
+
+				<button class="btn btn-save" form="csv">Save</button>
+			</form>
+		</section>
+
+		<section class="mapping-fields">
+			<h2 class="sub-title">@*@Model.Name*@ Fields</h2>
+			<ul class="drag-fields draggable">
+				@foreach (var label in Model.FieldLabels)
+				{
+					<li><span draggable="true">@label.Value @Html.Hidden(label.Key)</span></li>
+				}
+			</ul>
+		</section>
+
+	</div>
+
+</section>
+
+<script>
+	Cargo.ColumnMapping.init();
+</script>
+
