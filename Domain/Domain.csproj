@@ -30,6 +30,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -44,6 +50,11 @@
     <Compile Include="Classes\CsvMapper\CsvMapper.cs" />
     <Compile Include="Classes\CsvMapper\CsvMapperEventArgs.cs" />
     <Compile Include="Classes\CsvMapper\LogEntry.cs" />
+    <Compile Include="Data\EntityFramework\CargoDbContext.cs" />
+    <Compile Include="Data\EntityFramework\IRepository.cs" />
+    <Compile Include="Data\EntityFramework\IUnitOfWork.cs" />
+    <Compile Include="Data\EntityFramework\Repository.cs" />
+    <Compile Include="Data\EntityFramework\UnitOfWork.cs" />
     <Compile Include="Entities\Curry.cs" />
     <Compile Include="Entities\EbayCarClassification.cs" />
     <Compile Include="Entities\LamboVehicle.cs" />
@@ -54,7 +65,10 @@
     <Compile Include="Utilities\ReflectionUtility.cs" />
     <Compile Include="Utilities\SqlUtility.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
