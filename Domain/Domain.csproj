@@ -55,12 +55,16 @@
     <Compile Include="Data\EntityFramework\IUnitOfWork.cs" />
     <Compile Include="Data\EntityFramework\Repository.cs" />
     <Compile Include="Data\EntityFramework\UnitOfWork.cs" />
+    <Compile Include="Entities\BaseEntity.cs" />
     <Compile Include="Entities\Curry.cs" />
     <Compile Include="Entities\EbayCarClassification.cs" />
+    <Compile Include="Entities\Feed.cs" />
     <Compile Include="Entities\LamboVehicle.cs" />
     <Compile Include="Entities\SalesVersion.cs" />
     <Compile Include="Entities\TranslationLabel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Testing\MockRepository.cs" />
+    <Compile Include="Testing\MockUnitOfWork.cs" />
     <Compile Include="Utilities\DataAnnotationsUtility.cs" />
     <Compile Include="Utilities\ReflectionUtility.cs" />
     <Compile Include="Utilities\SqlUtility.cs" />

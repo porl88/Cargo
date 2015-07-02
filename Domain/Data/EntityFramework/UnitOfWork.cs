@@ -1,21 +1,23 @@
 ﻿namespace Domain.Data.EntityFramework
 {
 	using System.Threading.Tasks;
+	using Domain.Entities;
 
 	public class UnitOfWork : IUnitOfWork
 	{
 		private readonly CargoDbContext context = new CargoDbContext();
-		//private readonly IRepository<Article> articleRepository;
+		
+		private readonly IRepository<Feed> feedRepository;
 
 		public UnitOfWork()
 		{
-			//this.articleRepository = new Repository<Article>(this.context);
+			this.feedRepository = new Repository<Feed>(this.context);
 		}
 
-		//public IRepository<Article> ArticleRepository
-		//{
-		//	get { return this.articleRepository; }
-		//}
+		public IRepository<Feed> FeedRepository
+		{
+			get { return this.FeedRepository; }
+		}
 
 		public void Commit()
 		{

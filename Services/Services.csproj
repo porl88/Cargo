@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BaseResponse.cs" />
     <Compile Include="BulkCopy\BulkCopy.cs" />
     <Compile Include="BulkCopy\BulkDataCopyCommand.cs" />
     <Compile Include="BulkCopy\SqlBulkCopyService.cs" />
@@ -48,6 +49,10 @@
     <Compile Include="Commands\ISqlBulkInsertCommand.cs" />
     <Compile Include="Commands\TranslationLabelBulkInsertCommand.cs" />
     <Compile Include="Commands\ICommand.cs" />
+    <Compile Include="Feeds\FeedService.cs" />
+    <Compile Include="Feeds\IFeedService.cs" />
+    <Compile Include="Feeds\Transfer\EditFeedResponse.cs" />
+    <Compile Include="Feeds\Transfer\FeedDto.cs" />
     <Compile Include="Mapping\MappingResponse.cs" />
     <Compile Include="Mapping\MappingServiceFactory.cs" />
     <Compile Include="Mapping\IMappingService.cs" />
