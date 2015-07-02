@@ -22,9 +22,8 @@
 		{
 		}
 
-		public Task CommitAsync()
+		public async Task CommitAsync()
 		{
-			throw new System.NotImplementedException();
 		}
 	}
 }
