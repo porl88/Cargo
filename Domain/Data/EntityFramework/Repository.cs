@@ -1,10 +1,8 @@
 ﻿namespace Domain.Data.EntityFramework
 {
 	using System;
-	using System.Collections.Generic;
 	using System.Data.Entity;
 	using System.Linq;
-	using System.Linq.Expressions;
 	using System.Threading.Tasks;
 
 	public class Repository<T> : IRepository<T> where T : class
@@ -24,11 +22,6 @@
 			: this(context)
 		{
 			this.includes = includes;
-		}
-
-		public virtual T Get(int id)
-		{
-			return this.databaseSet.Find(id);
 		}
 
         public virtual IQueryable<T> Get()
@@ -51,8 +44,13 @@
                 return query;
             }
         }
-        
-        public virtual async Task<T> GetAsync(int id)
+
+		public virtual T Get(int id)
+		{
+			return this.databaseSet.Find(id);
+		}
+
+		public virtual async Task<T> GetAsync(int id)
 		{
 			return await this.databaseSet.FindAsync(id);
 		}
