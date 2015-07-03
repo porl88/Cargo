@@ -2,7 +2,7 @@
 {
     using System;
     using System.Linq;
-    using System.Collections.Generic;
+    using System.Data.Entity;
     using System.Threading.Tasks;
     using Domain.Data.EntityFramework;
     using Domain.Entities;
@@ -28,13 +28,15 @@
 
             try
             {
-                var feeds = await this.feedRepository.GetAllAsync();
+                var feeds = await this.feedRepository.Get().ToListAsync();
+                
                 response.Feeds = feeds.Select(x => new FeedDto
                 {
                     Id = x.Id,
                     Class = x.Class,
                     Mappings = x.Mappings
                 }).ToList();
+
                 response.Status = ResponseStatus.OK;
             }
             catch (Exception ex)

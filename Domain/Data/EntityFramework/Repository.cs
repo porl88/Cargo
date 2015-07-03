@@ -57,50 +57,7 @@
 			return await this.databaseSet.FindAsync(id);
 		}
 
-        public virtual async Task<List<T>> GetAllAsync()
-        {
-            // http://stackoverflow.com/questions/26676563/entity-framework-queryable-async
-            if (this.includes.Length == 0)
-            {
-                return await this.databaseSet.ToListAsync();
-            }
-            else
-            {
-                var query = this.databaseSet.Include(this.includes[0]);
-                if (this.includes.Length > 1)
-                {
-                    for (var i = 1; i < this.includes.Length; i++)
-                    {
-                        query = query.Include(this.includes[i]);
-                    }
-                }
-
-                return await query.ToListAsync();
-            }
-        }
-
-        public virtual async Task<List<T>> FindAsync(Expression<Func<T, bool>> filter)
-        {
-            if (this.includes.Length == 0)
-            {
-                return await this.databaseSet.Where(filter).ToListAsync();
-            }
-            else
-            {
-                var query = this.databaseSet.Include(this.includes[0]);
-                if (this.includes.Length > 1)
-                {
-                    for (var i = 1; i < this.includes.Length; i++)
-                    {
-                        query = query.Include(this.includes[i]);
-                    }
-                }
-
-                return await query.Where(filter).ToListAsync();
-            }
-        }
-
-		public virtual T Insert(T entity)
+ 		public virtual T Insert(T entity)
 		{
 			this.databaseSet.Add(entity);
 			this.context.Entry(entity).State = EntityState.Added;

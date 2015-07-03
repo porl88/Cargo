@@ -116,5 +116,16 @@
 				this.Delete(entityToRemove);
 			}
 		}
-	}
+
+
+        public Task<List<T>> GetAllAsync()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<List<T>> FindAsync(Expression<Func<T, bool>> filter)
+        {
+            throw new NotImplementedException();
+        }
+    }
 }
