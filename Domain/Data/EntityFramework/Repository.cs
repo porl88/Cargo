@@ -31,31 +31,74 @@
 			return this.databaseSet.Find(id);
 		}
 
-		public virtual async Task<T> GetAsync(int id)
+        public virtual IQueryable<T> Get()
+        {
+            if (this.includes.Length == 0)
+            {
+                return this.databaseSet;
+            }
+            else
+            {
+                var query = this.databaseSet.Include(this.includes[0]);
+                if (this.includes.Length > 1)
+                {
+                    for (var i = 1; i < this.includes.Length; i++)
+                    {
+                        query = query.Include(this.includes[i]);
+                    }
+                }
+
+                return query;
+            }
+        }
+        
+        public virtual async Task<T> GetAsync(int id)
 		{
 			return await this.databaseSet.FindAsync(id);
 		}
 
-		public virtual IQueryable<T> Get()
-		{
-			if (this.includes.Length == 0)
-			{
-				return this.databaseSet;
-			}
-			else
-			{
-				var query = this.databaseSet.Include(this.includes[0]);
-				if (this.includes.Length > 1)
-				{
-					for (var i = 1; i < this.includes.Length; i++)
-					{
-						query = query.Include(this.includes[i]);
-					}
-				}
+        public virtual async Task<List<T>> GetAllAsync()
+        {
+            // http://stackoverflow.com/questions/26676563/entity-framework-queryable-async
+            if (this.includes.Length == 0)
+            {
+                return await this.databaseSet.ToListAsync();
+            }
+            else
+            {
+                var query = this.databaseSet.Include(this.includes[0]);
+                if (this.includes.Length > 1)
+                {
+                    for (var i = 1; i < this.includes.Length; i++)
+                    {
+                        query = query.Include(this.includes[i]);
+                    }
+                }
 
-				return query;
-			}
-		}
+                return await query.ToListAsync();
+            }
+        }
+
+        public virtual async Task<List<T>> FindAsync(Expression<Func<T, bool>> filter)
+        {
+            if (this.includes.Length == 0)
+            {
+                return await this.databaseSet.Where(filter).ToListAsync();
+            }
+            else
+            {
+                var query = this.databaseSet.Include(this.includes[0]);
+                if (this.includes.Length > 1)
+                {
+                    for (var i = 1; i < this.includes.Length; i++)
+                    {
+                        query = query.Include(this.includes[i]);
+                    }
+                }
+
+                return await query.Where(filter).ToListAsync();
+            }
+        }
 
 		public virtual T Insert(T entity)
 		{
@@ -69,27 +112,6 @@
 			this.databaseSet.Attach(entityToUpdate);
 			this.context.Entry(entityToUpdate).State = EntityState.Modified;
 			return entityToUpdate;
-		}
-
-		public virtual IQueryable<T> Find(Expression<Func<T, bool>> filter)
-		{
-			if (this.includes.Length == 0)
-			{
-				return this.databaseSet.Where(filter);
-			}
-			else
-			{
-				var query = this.databaseSet.Include(this.includes[0]);
-				if (this.includes.Length > 1)
-				{
-					for (var i = 1; i < this.includes.Length; i++)
-					{
-						query = query.Include(this.includes[i]);
-					}
-				}
-
-				return query.Where(filter);
-			}
 		}
 
 		public virtual void Delete(int id)

@@ -1,21 +1,26 @@
 ﻿namespace Domain.Data.EntityFramework
 {
-	using System;
-	using System.Linq;
-	using System.Linq.Expressions;
-	using System.Threading.Tasks;
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Linq.Expressions;
+    using System.Threading.Tasks;
 
 	public interface IRepository<T>
 	{
 		T Get(int id);
 
-		Task<T> GetAsync(int id);
+        IQueryable<T> Get();
+        
+        Task<T> GetAsync(int id);
 
-		IQueryable<T> Get();
+        Task<List<T>> GetAllAsync();
 
-		IQueryable<T> Find(Expression<Func<T, bool>> filter);
+        Task<List<T>> FindAsync(Expression<Func<T, bool>> filter);
 
-		T Insert(T entity);
+        //Task<List<T>> FindAsync(Expression<Func<T, bool>> filter, int skip, int take);
+        
+        T Insert(T entity);
 
 		T Update(T entity);
 

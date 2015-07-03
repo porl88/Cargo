@@ -1,11 +1,12 @@
 ﻿namespace Services.Feeds
 {
-	using System.Threading.Tasks;
-	using Services.Feeds.Transfer;
+    using System.Collections.Generic;
+    using System.Threading.Tasks;
+    using Services.Feeds.Transfer;
 
 	public interface IFeedService
 	{
-		Task GetFeedAsync();
+        Task<GetFeedsResponse> GetAllFeedsAsync();
 
 		Task<EditFeedResponse> AddFeedAsync(FeedDto feed);
 
