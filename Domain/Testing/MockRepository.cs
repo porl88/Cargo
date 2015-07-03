@@ -1,9 +1,8 @@
 ﻿namespace Domain.Testing
 {
-	using System;
 	using System.Collections.Generic;
+	using System.Data.Entity;
 	using System.Linq;
-	using System.Linq.Expressions;
 	using System.Threading.Tasks;
 	using Domain.Data.EntityFramework;
 	using Domain.Entities;
@@ -20,6 +19,11 @@
 			}
 		}
 
+		public virtual IQueryable<T> Get()
+		{
+			return this.entities.AsQueryable();
+		}
+
 		public virtual T Get(int id)
 		{
 			return this.entities.FirstOrDefault(x => x.Id == id);
@@ -27,18 +31,7 @@
 
 		public virtual async Task<T> GetAsync(int id)
 		{
-			throw new NotImplementedException();
-		}
-
-		public virtual IQueryable<T> Get()
-		{
-			return this.entities.AsQueryable();
-		}
-
-		public virtual IQueryable<T> Find(Expression<Func<T, bool>> expression)
-		{
-			var predicate = expression.Compile();
-			return this.entities.Where(predicate).AsQueryable();
+			return await this.entities.AsQueryable().FirstOrDefaultAsync(x => x.Id == id);
 		}
 
 		public virtual T Insert(T entity)
@@ -110,7 +103,7 @@
 
 		public virtual void Delete(int id)
 		{
-			var entityToRemove = this.Find(x => x.Id == id).FirstOrDefault();
+			var entityToRemove = this.Get().FirstOrDefault(x => x.Id == id);
 			if (entityToRemove != null)
 			{
 				this.Delete(entityToRemove);
