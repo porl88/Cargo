@@ -59,7 +59,7 @@
     <Compile Include="Entities\BaseEntity.cs" />
     <Compile Include="Entities\Curry.cs" />
     <Compile Include="Entities\EbayCarClassification.cs" />
-    <Compile Include="Entities\Feed.cs" />
+    <Compile Include="Entities\Feeds\Feed.cs" />
     <Compile Include="Entities\LamboVehicle.cs" />
     <Compile Include="Entities\SalesVersion.cs" />
     <Compile Include="Entities\TranslationLabel.cs" />

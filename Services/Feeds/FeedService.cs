@@ -1,12 +1,12 @@
 ﻿namespace Services.Feeds
 {
-    using System;
-    using System.Linq;
-    using System.Data.Entity;
-    using System.Threading.Tasks;
-    using Domain.Data.EntityFramework;
-    using Domain.Entities;
-    using Services.Feeds.Transfer;
+	using System;
+	using System.Data.Entity;
+	using System.Linq;
+	using System.Threading.Tasks;
+	using Domain.Data.EntityFramework;
+	using Domain.Entities;
+	using Services.Feeds.Transfer;
 
     public class FeedService : IFeedService
     {
@@ -48,7 +48,7 @@
             return response;
         }
 
-        public async Task<EditFeedResponse> AddFeedAsync(FeedDto feed)
+		public async Task<EditFeedResponse> AddFeedAsync(FeedDto feed)
         {
             var response = new EditFeedResponse();
 
