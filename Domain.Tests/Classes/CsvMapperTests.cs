@@ -118,7 +118,7 @@
                 Curry = e.MapColumn<string>(0),
                 Quantity = e.MapColumn<int>(1),
                 Price = e.ParseColumn<decimal>(2),
-                Total = e.ParseColumn<decimal>(3),
+                Total = e.ParseColumn<decimal>(3)
             };
         }
 

@@ -25,9 +25,9 @@
 			this.Log = new List<LogEntry>();
 		}
 
-		public delegate V CsvMapperHandler<V>(object sender, CsvMapperEventArgs e);
+		public delegate T CsvMapperHandler(object sender, CsvMapperEventArgs e);
 
-		public event CsvMapperHandler<T> OnItemDataBound;
+		public event CsvMapperHandler OnItemDataBound;
 
 		public List<LogEntry> Log { get; private set; }
 
@@ -219,9 +219,9 @@
 
 			if (mappings == null)
 			{
-				var csvMapEvent = new CsvMapperEventArgs(fields, this.rowIndex);
-				item = this.OnItemDataBound(this, csvMapEvent);
-				this.Log.AddRange(csvMapEvent.Log);
+				var args = new CsvMapperEventArgs(fields, this.rowIndex);
+				item = this.OnItemDataBound(this, args);
+				this.Log.AddRange(args.Log);
 			}
 			else
 			{
