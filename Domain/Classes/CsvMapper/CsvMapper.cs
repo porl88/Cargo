@@ -76,7 +76,11 @@
 				while (!reader.EndOfStream)
 				{
 					var row = reader.ReadLine();
-					rows.Add(this.ProcessRow(row, index++, mappings));
+                    var processedRow = this.ProcessRow(row, index++, mappings);
+                    if (processedRow != null)
+                    {
+                        rows.Add(processedRow);
+                    }
 				}
 			}
 
@@ -173,14 +177,12 @@
 		{
 			// http://odetocode.com/blogs/scott/archive/2011/06/29/manual-validation-with-data-annotations.aspx
 			ICollection<ValidationResult> results;
-			if (DataAnnotationsUtility.TryValidate(item, out results))
-			{
-				return true;
-			}
-			else
+			if (!DataAnnotationsUtility.TryValidate(item, out results))
 			{
 				return this.LogValidationErrors(results);
 			}
+
+            return true;
 		}
 
 		private bool LogValidationErrors(ICollection<ValidationResult> results)
@@ -189,14 +191,16 @@
 
 			foreach (var error in results)
 			{
-				if (error.ErrorMessage.Contains("required"))
-				{
-					isValid = false;
-				}
+                var isRequired = error.ErrorMessage.Contains("required");
+
+                if (isRequired)
+                {
+                    isValid = false;
+                }
 
 				this.Log.Add(new LogEntry
 				{
-					ErrorType = isValid ? ErrorType.Warning : ErrorType.Error,
+                    ErrorType = isRequired ? ErrorType.Warning : ErrorType.Error,
 					RowCount = this.rowIndex,
 					ColumnName = string.Join(", ", error.MemberNames),
 					Value = isValid ? string.Join(", ", error.GetType().CustomAttributes) : string.Empty,
