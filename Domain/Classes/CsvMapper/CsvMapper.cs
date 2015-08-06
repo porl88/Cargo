@@ -145,7 +145,7 @@
 			{
 				this.Log.Add(new LogEntry
 				{
-					ErrorType = ErrorType.Error,
+					ErrorType = ErrorType.Fail,
 					Message = ex.Message,
 					RowCount = this.rowIndex,
 					Value = row
@@ -201,7 +201,7 @@
 
 				this.Log.Add(new LogEntry
 				{
-                    ErrorType = isRequired ? ErrorType.Warning : ErrorType.Error,
+                    ErrorType = isRequired ? ErrorType.Warning : ErrorType.Fail,
 					RowCount = this.rowIndex,
 					ColumnName = string.Join(", ", error.MemberNames),
 					Value = isValid ? string.Join(", ", error.GetType().CustomAttributes) : string.Empty,
@@ -264,7 +264,7 @@
 				{
 					this.Log.Add(new LogEntry
 					{
-						ErrorType = ErrorType.Error,
+						ErrorType = ErrorType.Fail,
 						Message = ex.Message,
 						RowCount = this.rowIndex,
 						Value = mappings[prop.Name]
