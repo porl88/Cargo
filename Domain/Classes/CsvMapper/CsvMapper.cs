@@ -179,19 +179,20 @@
 			ICollection<ValidationResult> results;
 			if (!DataAnnotationsUtility.TryValidate(item, out results))
 			{
-				return this.LogValidationErrors(results);
+				return this.LogValidationErrors(results, item);
 			}
 
             return true;
 		}
 
-		private bool LogValidationErrors(ICollection<ValidationResult> results)
+		private bool LogValidationErrors(ICollection<ValidationResult> results, T item)
 		{
 			var isValid = true;
 
 			foreach (var error in results)
 			{
-                var isRequired = error.ErrorMessage.Contains("required");
+                var itemProperty = item.GetType().GetProperty(error.MemberNames.First());
+                var isRequired = itemProperty.GetCustomAttributes(true).Any(x => x.GetType() == typeof(RequiredAttribute));
 
                 if (isRequired)
                 {
@@ -204,7 +205,8 @@
 					RowCount = this.rowIndex,
 					ColumnName = string.Join(", ", error.MemberNames),
 					Value = isValid ? string.Join(", ", error.GetType().CustomAttributes) : string.Empty,
-					Message = error.ErrorMessage
+                    //Value = property.GetValue(item, null).ToString(),
+                    Message = error.ErrorMessage
 				});
 			}
 
